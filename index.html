@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science Fundamentals Quiz - 100 Questions</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Enhanced styles for 100-question quiz system */
+        .prerequisite-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .prerequisites-list ul {
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .prerequisites-list li {
+            margin: 8px 0;
+            padding: 5px 0;
+        }
+
+        .password-section {
+            margin-top: 25px;
+            padding: 25px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .password-section input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .password-section button {
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .password-section button:hover {
+            background-color: #45a049;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .subject-badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .question-text {
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .options {
+            margin: 20px 0;
+        }
+
+        .options label {
+            display: block;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: #fafafa;
+        }
+
+        .options label:hover {
+            background-color: #e8f4fd;
+            border-color: #2196F3;
+        }
+
+        .options label.selected {
+            background-color: #e8f5e9;
+            border-color: #4CAF50;
+        }
+
+        .options input[type="radio"] {
+            margin-right: 12px;
+            transform: scale(1.2);
+        }
+
+        /* .nav-btn {
+            width: 40px;
+            height: 40px;
+            margin: 4px;
+            border: 2px solid #ddd;
+            background-color: white;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        .nav-btn.answered {
+            background-color: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+
+        .nav-btn.current {
+            border: 3px solid #2196F3;
+            background-color: #2196F3;
+            color: white;
+        } */
+
+        .navigation-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 4px;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        .result-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .score-display {
+            margin: 30px 0;
+        }
+
+        .score-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        }
+
+        .score {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .subject-breakdown {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .subject-score {
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            border-left: 4px solid;
+        }
+
+        .author-section {
+            margin-top: 40px;
+            padding: 25px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .author-section input {
+            width: 250px;
+            padding: 10px;
+            margin: 15px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .author-section button {
+            padding: 10px 20px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .correct-answer-display {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .warning {
+            color: #f44336;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .loading {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            font-size: 18px;
+        }
+
+        .quiz-info {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #2196F3;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .left.box, .right.box {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .question-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .subject-badge {
+                margin-top: 10px;
+            }
+
+            .navigation-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+
+            .subject-breakdown {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="heading">
+        <h1>Computer Science Fundamentals Quiz</h1>
+        <div class="quiz-info">
+            <strong>100 Questions</strong> | DBMS (25) | FEDF (25) | OOP (25) | OS (25)
+        </div>
+        <div id="timer">01:30:00</div>
+    </div>
+
+    <div class="container" style="display: none;">
+        <div class="left box">
+            <div class="loading" id="loading">
+                <div>Loading quiz data...</div>
+                <div>Please wait while we prepare your 100 questions</div>
+            </div>
+
+            <form id="quizForm">
+                <!-- Questions will be loaded dynamically from database -->
+            </form>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+
+            <div class="navigation">
+                <button type="button" class="btn prev" id="prevBtn" disabled>Previous</button>
+                <button type="button" class="btn next" id="nextBtn" disabled>Next</button>
+            </div>
+            <button type="button" id="submitBtn">Submit Quiz</button>
+        </div>
+
+        <div class="right box">
+            <h3>Question Navigation (1-100)</h3>
+            <div class="navigation-grid">
+                <!-- Navigation buttons will be added dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <div id="result" style="display: none;">
+        <!-- Results will be displayed here -->
+    </div>
+
+    <!-- Audio elements for notifications -->
+    <audio id="notification-sound" preload="auto">
+        <source src="data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADAAAAAA==" type="audio/mpeg">
+    </audio>
+
+    <!-- Load the JavaScript that connects to the backend -->
+    <script src="script.js"></script>
+</body>
+
+</html>
